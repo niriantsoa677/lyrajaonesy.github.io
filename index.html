@@ -3,42 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Portfolio - Ly Rajaonesy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
-      padding: 20px;
     }
-    .project {
+
+    header {
+      background: #020617;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #38bdf8;
+    }
+
+    .card {
       background: #1e293b;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 12px;
     }
-    a { color: #38bdf8; }
   </style>
 </head>
+
 <body>
 
-<h1>STAGIAIRE EN ALTERNANCE</h1>
-<h2>Administration Système et Réseau</h2>
+<header>
+  <h1>Ly Rajaonesy</h1>
+  <p>STAGIAIRE EN ALTERNANCE</p>
+  <p>Administration Système et Réseau</p>
+</header>
 
-<p>Bienvenue sur mon portfolio GitHub 🚀</p>
+<section>
+  <h2>👤 À propos de moi</h2>
+  <div class="card">
+    <p>
+      Étudiant en Administration Système et Réseau, motivé par les technologies
+      réseaux, Linux et la cybersécurité. Je développe mes compétences à travers
+      des projets pratiques et des laboratoires.
+    </p>
+  </div>
+</section>
 
-<h3>📂 Mes projets</h3>
-<div id="projects"></div>
+<section>
+  <h2>📂 Projets</h2>
+  <div class="card" id="projects">
+    Chargement des projets GitHub...
+  </div>
+</section>
 
 <script>
-fetch("https://api.github.com/users/TON_PSEUDO/repos")
+fetch("https://api.github.com/users/lyrajaonesy/repos")
   .then(response => response.json())
   .then(repos => {
     const container = document.getElementById("projects");
+    container.innerHTML = "";
     repos.forEach(repo => {
       const div = document.createElement("div");
-      div.className = "project";
+      div.style.marginBottom = "15px";
       div.innerHTML = `
-        <h4>${repo.name}</h4>
+        <h3>${repo.name}</h3>
         <p>${repo.description || "Aucune description"}</p>
         <a href="${repo.html_url}" target="_blank">Voir sur GitHub</a>
       `;
